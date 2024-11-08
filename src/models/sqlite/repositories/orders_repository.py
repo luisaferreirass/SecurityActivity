@@ -1,6 +1,7 @@
 from sqlite3 import Connection
+from src.models.sqlite.interfaces.orders_repository import OrdersRepositoryInterface
 
-class OrdersRepository:
+class OrdersRepository(OrdersRepositoryInterface):
     def __init__(self, conn: Connection):
         self.__conn = conn
 
