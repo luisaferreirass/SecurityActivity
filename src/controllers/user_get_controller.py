@@ -1,6 +1,7 @@
 from src.models.sqlite.interfaces.user_repository import UserRepositoryInterface
+from .interfaces.user_get_controller import GetUserControllerInterface
 
-class GetUserController:
+class GetUserController(GetUserControllerInterface):
     def __init__(self, user_repository: UserRepositoryInterface):
         self.__user_repository = user_repository
 

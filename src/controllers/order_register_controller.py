@@ -1,6 +1,7 @@
 from src.models.sqlite.interfaces.orders_repository import OrdersRepositoryInterface
+from .interfaces.order_register_controller import OrderRegisterControllerInterface
 
-class OrderRegisterController:
+class OrderRegisterController(OrderRegisterControllerInterface):
     def __init__(self, orders_repository: OrdersRepositoryInterface):
         self.__orders_repository = orders_repository
 

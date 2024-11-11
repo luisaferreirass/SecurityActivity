@@ -1,6 +1,7 @@
 from src.models.sqlite.interfaces.orders_repository import OrdersRepositoryInterface
+from .interfaces.order_lister_controller import OrderListerControllerInterface
 
-class OrderListerController:
+class OrderListerController(OrderListerControllerInterface):
     def __init__(self, orders_repository : OrdersRepositoryInterface):
         self.__orders_repository = orders_repository
 
@@ -23,6 +24,6 @@ class OrderListerController:
             "data": {
                 "type": "orders",
                 "count": len(list_orders),
-                "detaisl": list_orders
+                "details": list_orders
             }
         }
