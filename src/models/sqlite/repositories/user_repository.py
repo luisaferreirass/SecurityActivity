@@ -20,7 +20,10 @@ class UserRepository(UserRepositoryInterface):
             """ 
             SELECT id, username, password
             FROM users
-            WHERE user_id = ?
+            WHERE id = ?
             """, (user_id,)
 
         )
+
+        user = cursor.fetchone()
+        return user

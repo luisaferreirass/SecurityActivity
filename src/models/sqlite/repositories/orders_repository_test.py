@@ -47,4 +47,4 @@ def test_list_orders():
     assert "FROM orders" in cursor.execute.call_args[0][0]
     assert "WHERE user_id = ?" in cursor.execute.call_args[0][0]
     assert cursor.execute.call_args[0][1] == (user_id,)
-    # cursor.fetchone.assert_called_once()
+    cursor.fetchall.assert_called_once()

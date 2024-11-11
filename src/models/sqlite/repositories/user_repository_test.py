@@ -46,5 +46,6 @@ def test_get_user_by_id():
 
     assert "SELECT id, username, password" in cursor.execute.call_args[0][0]
     assert "FROM users" in cursor.execute.call_args[0][0]
-    assert "WHERE user_id = ?" in cursor.execute.call_args[0][0]
+    assert "WHERE id = ?" in cursor.execute.call_args[0][0]
     assert cursor.execute.call_args[0][1] == (user_id,)
+    cursor.fetchone.assert_called_once()
