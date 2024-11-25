@@ -5,17 +5,16 @@ class GetUserController(GetUserControllerInterface):
     def __init__(self, user_repository: UserRepositoryInterface):
         self.__user_repository = user_repository
 
-    def get_user(self, user_info: dict) -> dict:
-        user_id = user_info["user_id"]
-
-        user = self.__get_user_in_db(user_id)
+    def get_user(self, username: str) -> dict:
+        
+        user = self.__get_user_in_db(username)
 
         formated_response = self.__format_response(user)
 
         return formated_response
 
-    def __get_user_in_db(self, user_id: int) -> tuple[int, str, str]:
-        user = self.__user_repository.get_user_by_id(user_id)
+    def __get_user_in_db(self, username: str) -> tuple[int, str, str]:
+        user = self.__user_repository.get_user_by_id(username)
 
         return user
     

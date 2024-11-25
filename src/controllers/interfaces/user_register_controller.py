@@ -3,5 +3,5 @@ from abc import ABC, abstractmethod
 class UserRegisterControllerInterface(ABC):
 
     @abstractmethod
-    def registry(self, user_info: dict) -> dict:
+    def registry(self, username: str, password: str) -> dict:
         pass

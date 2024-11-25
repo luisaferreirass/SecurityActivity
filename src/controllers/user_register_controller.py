@@ -7,9 +7,7 @@ class UserRegisterController(UserRegisterControllerInterface):
         self.__user_repository = user_repository
         self.__password_handler = PasswordHandler()
 
-    def registry(self, user_info: dict) -> dict:
-        username = user_info["username"]
-        password = user_info["password"]
+    def registry(self, username: str, password: str) -> dict:
         hashed_password = self.__encrypt_password(password)
 
         self.__registry_in_db(username, hashed_password)

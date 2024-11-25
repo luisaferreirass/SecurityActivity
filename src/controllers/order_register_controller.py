@@ -5,10 +5,7 @@ class OrderRegisterController(OrderRegisterControllerInterface):
     def __init__(self, orders_repository: OrdersRepositoryInterface):
         self.__orders_repository = orders_repository
 
-    def registry(self, order_info: dict) -> dict:
-        user_id = order_info["user_id"]
-        description = order_info["description"]
-        date = order_info["date"]
+    def registry(self, user_id: int, description: str, date: str) -> dict:
 
         self.__registry_in_db(user_id, description, date)
 

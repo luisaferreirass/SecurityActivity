@@ -5,9 +5,8 @@ class OrderListerController(OrderListerControllerInterface):
     def __init__(self, orders_repository : OrdersRepositoryInterface):
         self.__orders_repository = orders_repository
 
-    def list(self, user_info: dict) -> dict:
-        user_id = user_info["user_id"]
-
+    def list(self, user_id: int) -> dict:
+       
         list_orders = self.__list_in_db(user_id)
 
         formated_response = self.__format_response(list_orders)
