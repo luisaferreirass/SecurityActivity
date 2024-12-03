@@ -2,6 +2,8 @@ from src.controllers.interfaces.order_register_controller import OrderRegisterCo
 from .http_types.http_request import HttpRequest
 from .http_types.http_response import HttpResponse
 from .interface.view_interface import  ViewInterface
+from src.errors.error_types.http_bad_request import HttpBadRequestError
+
 
 
 class OrderRegisterView(ViewInterface):
@@ -28,4 +30,4 @@ class OrderRegisterView(ViewInterface):
             or not isinstance(user_id, int)
             or not isinstance(description, str)
             or not isinstance(date, str)
-        ): raise Exception("Invalid input")
+        ): raise HttpBadRequestError("Invalid input")

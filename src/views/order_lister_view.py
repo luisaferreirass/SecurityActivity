@@ -2,6 +2,8 @@ from src.controllers.interfaces.order_lister_controller import OrderListerContro
 from .http_types.http_request import HttpRequest
 from .http_types.http_response import HttpResponse
 from .interface.view_interface import  ViewInterface
+from src.errors.error_types.http_bad_request import HttpBadRequestError
+
 
 class OrderListerView(ViewInterface):
     def __init__(self, controller: OrderListerControllerInterface):
@@ -20,4 +22,4 @@ class OrderListerView(ViewInterface):
     def __validate_input(self, user_id: any) -> None:
 
         if not user_id or not isinstance(user_id, int):
-            raise Exception("Invalid input")
+            raise HttpBadRequestError("Invalid input")

@@ -2,6 +2,8 @@ from .http_types.http_request import HttpRequest
 from .http_types.http_response import HttpResponse
 from src.controllers.interfaces.user_get_controller import GetUserControllerInterface
 from .interface.view_interface import  ViewInterface
+from src.errors.error_types.http_bad_request import HttpBadRequestError
+
 
 
 class GetUserView(ViewInterface):
@@ -10,7 +12,7 @@ class GetUserView(ViewInterface):
 
 
     def handle(self, http_request: HttpRequest) -> HttpResponse:
-        username = http_request.body.get("username")
+        username = http_request.params.get("username") 
 
         self.__validate_input(username)
 
@@ -21,5 +23,5 @@ class GetUserView(ViewInterface):
 
     def __validate_input(self, username: any) -> None:
         if not username or not isinstance(username, str):
-            raise Exception("Invalid input")
+            raise HttpBadRequestError("Invalid input")
 

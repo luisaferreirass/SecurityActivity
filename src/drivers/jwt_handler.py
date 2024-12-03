@@ -1,13 +1,12 @@
 import jwt
 from datetime import timedelta, datetime, timezone
 from src.configs.jwt_configs import jwt_infos
-
 class JWTHandler:
     def create_jwt_token(self, body: dict = {}) -> str:
         token = jwt.encode(
         payload={
-            'exp': datetime.now(timezone.utc) + timedelta(hours=int(jwt_infos["JWT_HOURS"])),
-            **body 
+            'exp': datetime.now(timezone.utc) + timedelta(hours=int(jwt_infos.get("JWT_HOURS"))),
+            **body
         },
         key=jwt_infos["KEY"],
         algorithm=jwt_infos["ALGORITHM"]

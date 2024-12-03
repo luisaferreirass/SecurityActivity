@@ -9,4 +9,4 @@ class PasswordHandler:
         return hashed_password
     
     def check_password(self, password: str, hashed_password: str) -> bool:
-        return bcrypt.checkpw(password.encode("utf8", hashed_password))
+        return bcrypt.checkpw(password.encode("utf-8"), hashed_password)
