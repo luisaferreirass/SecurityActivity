@@ -5,6 +5,7 @@ from .interfaces.login_creator_controller import LoginCreatorControllerInterface
 from src.errors.error_types.http_not_found import HttpNotFoundError
 from src.errors.error_types.http_bad_request import HttpBadRequestError
 
+
 class LoginCreatorController(LoginCreatorControllerInterface):
     def __init__(self, user_respository: UserRepositoryInterface):
         self.__user_repository = user_respository
@@ -12,18 +13,14 @@ class LoginCreatorController(LoginCreatorControllerInterface):
         self.__password_handler = PasswordHandler()
 
     def login(self, username: str, password: str) -> dict:
-        
+
         user = self.__find_user_in_db(username)
         user_id = user[0]
         hashed_password = user[2]
 
         self.__verify_password(password, hashed_password)
-        
         token = self.__create_token(user_id, username)
-
-        formated_response = self.__format_response(username, token)
-
-        return formated_response
+        return self.__format_response(username, token)
 
     def __find_user_in_db(self, username: str) -> tuple[int, str, str]:
         user = self.__user_repository.get_user_by_username(username)
@@ -37,14 +34,15 @@ class LoginCreatorController(LoginCreatorControllerInterface):
         
         is_password_correct = self.__password_handler.check_password(password, hashed_password)
 
-       
         if not is_password_correct:
             
             raise HttpBadRequestError("Wrong password")
         
     def __create_token(self, user_id: int, username: str) -> str:
-        payload = {"user_id": user_id,
-                   "username": username}        
+        payload = {
+            "user_id": user_id,
+            "username": username
+        }
 
         token = self.__jwt_handler.create_jwt_token(payload)
 
