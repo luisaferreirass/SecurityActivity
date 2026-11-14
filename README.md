@@ -1,49 +1,49 @@
 # 🔐 Security Activity
 
-## 📝 Sobre o projeto
+## 📝 About the project
 
-API REST de autenticação e segurança desenvolvida com **Flask**, implementando práticas modernas de segurança como criptografia de senhas com **bcrypt** e autenticação via **JWT (JSON Web Tokens)**. O projeto demonstra conceitos essenciais de segurança em aplicações web.
+Authentication and security REST API built with **Flask**, implementing modern security practices such as password hashing with **bcrypt** and authentication via **JWT (JSON Web Tokens)**. The project demonstrates essential security concepts for web applications.
 
-Ideal para aprendizado de:
-- Autenticação e autorização
-- Criptografia de senhas com bcrypt
+Great for learning:
+- Authentication and authorization
+- Password hashing with bcrypt
 - JSON Web Tokens (JWT)
-- Boas práticas de segurança em APIs
-- Variáveis de ambiente com python-dotenv
-- Framework Flask
-- Testes automatizados
+- API security best practices
+- Environment variables with python-dotenv
+- The Flask framework
+- Automated testing
 
-## 🚀 Tecnologias utilizadas
+## 🚀 Technologies used
 
 - **Python 3.x**
-- **Flask 3.0.3** - Framework web
-- **bcrypt 4.2.0** - Criptografia de senhas
-- **PyJWT 2.9.0** - Autenticação via tokens JWT
-- **python-dotenv 1.0.1** - Gerenciamento de variáveis de ambiente
-- **Pytest 8.3.3** - Framework de testes
+- **Flask 3.0.3** - Web framework
+- **bcrypt 4.2.0** - Password hashing
+- **PyJWT 2.9.0** - JWT token authentication
+- **python-dotenv 1.0.1** - Environment variable management
+- **Pytest 8.3.3** - Testing framework
 - **Jinja2 3.1.4** - Template engine
 
-## ⚙️ Como executar
+## ⚙️ How to run
 
-### Pré-requisitos
+### Prerequisites
 
-- Python 3.x instalado
-- pip (gerenciador de pacotes Python)
+- Python 3.x installed
+- pip (Python package manager)
 
-### Instalação
+### Installation
 
-1. Clone o repositório:
+1. Clone the repository:
 ```bash
 git clone https://github.com/luisaferreirass/SecurityActivity.git
 cd SecurityActivity
 ```
 
-2. Crie um ambiente virtual (recomendado):
+2. Create a virtual environment (recommended):
 ```bash
 python -m venv venv
 ```
 
-3. Ative o ambiente virtual:
+3. Activate the virtual environment:
 ```bash
 # Windows
 venv\Scripts\activate
@@ -52,68 +52,68 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-4. Instale as dependências:
+4. Install the dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-5. Configure as variáveis de ambiente:
+5. Set the environment variables:
 ```bash
-# Crie um arquivo .env na raiz do projeto
-SECRET_KEY=sua_chave_secreta_aqui
-JWT_SECRET_KEY=sua_chave_jwt_aqui
+# Create a .env file in the project root
+SECRET_KEY=your_secret_key_here
+JWT_SECRET_KEY=your_jwt_key_here
 ```
 
-### Executando a aplicação
+### Running the application
 ```bash
 python app.py
 ```
 
-A API estará disponível em: `http://localhost:5000`
+The API will be available at: `http://localhost:5000`
 
-### Executando os testes
+### Running the tests
 ```bash
 pytest
 ```
 
-ou para ver mais detalhes:
+or, for more details:
 ```bash
 pytest -v
 ```
 
-## 🎯 Funcionalidades
+## 🎯 Features
 
-- 🔐 **Registro de usuários** com senha criptografada
-- 🔑 **Login** com geração de token JWT
-- ✅ **Autenticação** via token JWT
-- 🛡️ **Rotas protegidas** que requerem autenticação
-- 🔒 **Criptografia de senhas** com bcrypt
-- 🧪 **Testes automatizados**
+- 🔐 **User registration** with hashed passwords
+- 🔑 **Login** with JWT token generation
+- ✅ **Authentication** via JWT token
+- 🛡️ **Protected routes** that require authentication
+- 🔒 **Password hashing** with bcrypt
+- 🧪 **Automated tests**
 
-## 🛠️ Modelo de dados
+## 🛠️ Data model
 
-### User (Usuário)
+### User
 
-| Campo | Tipo | Descrição |
+| Field | Type | Description |
 |-------|------|-----------|
-| id | Integer | Identificador único |
-| username | String | Nome de usuário (único) |
-| password | String | Senha criptografada com bcrypt |
-| email | String | E-mail do usuário |
+| id | Integer | Unique identifier |
+| username | String | Username (unique) |
+| password | String | Password hashed with bcrypt |
+| email | String | User email |
 
-## 📸 Endpoints da API
+## 📸 API Endpoints
 
-### Autenticação
+### Authentication
 
-| Método | Endpoint | Descrição | Autenticação |
+| Method | Endpoint | Description | Auth required |
 |--------|----------|-----------|--------------|
-| POST | `/register` | Registra um novo usuário | Não |
-| POST | `/login` | Autentica usuário e retorna JWT | Não |
-| GET | `/profile` | Retorna dados do usuário logado | Sim (JWT) |
+| POST | `/register` | Registers a new user | No |
+| POST | `/login` | Authenticates the user and returns a JWT | No |
+| GET | `/profile` | Returns the logged-in user's data | Yes (JWT) |
 
-## 💡 Exemplos de uso
+## 💡 Usage examples
 
-### Registrar um novo usuário
+### Register a new user
 ```bash
 POST /register
 Content-Type: application/json
@@ -121,11 +121,11 @@ Content-Type: application/json
 {
   "username": "johndoe",
   "email": "john@example.com",
-  "password": "senha123"
+  "password": "password123"
 }
 ```
 
-**Resposta:**
+**Response:**
 ```json
 {
   "message": "Usuário criado com sucesso",
@@ -133,18 +133,18 @@ Content-Type: application/json
 }
 ```
 
-### Fazer login
+### Log in
 ```bash
 POST /login
 Content-Type: application/json
 
 {
   "username": "johndoe",
-  "password": "senha123"
+  "password": "password123"
 }
 ```
 
-**Resposta:**
+**Response:**
 ```json
 {
   "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -152,13 +152,13 @@ Content-Type: application/json
 }
 ```
 
-### Acessar rota protegida
+### Access a protected route
 ```bash
 GET /profile
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
-**Resposta:**
+**Response:**
 ```json
 {
   "id": 1,
@@ -167,30 +167,30 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 }
 ```
 
-## 🔒 Recursos de Segurança
+## 🔒 Security Features
 
-- **Bcrypt**: Hash de senhas com salt automático
-- **JWT**: Tokens stateless para autenticação
-- **Variáveis de ambiente**: Proteção de credenciais sensíveis
-- **Validação de dados**: Verificação de entrada do usuário
-- **Rotas protegidas**: Middleware de autenticação
+- **Bcrypt**: Password hashing with automatic salt
+- **JWT**: Stateless tokens for authentication
+- **Environment variables**: Protection of sensitive credentials
+- **Data validation**: User input checks
+- **Protected routes**: Authentication middleware
 
-## ⚠️ Boas Práticas Implementadas
+## ⚠️ Best Practices Implemented
 
-- Senhas nunca armazenadas em texto puro
-- Uso de variáveis de ambiente para informações sensíveis
-- Tokens JWT com expiração
-- Validação de entrada de dados
-- Separação de responsabilidades
+- Passwords are never stored in plain text
+- Environment variables for sensitive information
+- JWT tokens with expiration
+- Input data validation
+- Separation of concerns
 
-## 🤝 Contribuindo
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
+Contributions are welcome! Feel free to open issues or submit pull requests.
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está sob a licença MIT.
+This project is licensed under the MIT License.
 
-## 👩‍💻 Autora
+## 👩‍💻 Author
 
-Desenvolvido por [Luisa Ferreira](https://github.com/luisaferreirass)
+Developed by [Luisa Ferreira](https://github.com/luisaferreirass)
